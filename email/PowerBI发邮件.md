@@ -6,9 +6,9 @@
   - [技术路线与使用说明](#3技术路线与使用说明)
     - [emailjs注册](#31注册)
     - [创建邮件服务](#32-创建邮件服务add-new-service)
-    - [创建邮件模板](33-创建邮件模板)
-    - [获取相关参数](34-获取信息)
-    - [在PBI中使用](35-在powerbi中使用邮件预警视觉对象)
+    - [创建邮件模板](#33-创建邮件模板)
+    - [获取相关参数](#34-获取信息)
+    - [在PBI中使用](#35-在powerbi中使用邮件预警视觉对象)
   - [获取方式](#5获取方式)
   - [更新记录](#6更新记录)
   - [其他](#7其他)
@@ -41,7 +41,7 @@
 
 ![img](https://raw.githubusercontent.com/luojiandan/imgs/main/imgs/OE1MB%7D0KRG6XZXJH8Y5PSYT.png)
 
-​	账号注册后，我们还需要创建邮件服务与邮件模板。
+​	账号注册后，我们还需要创建[邮件服务](#32-创建邮件服务add-new-service)与[邮件模板](#33-创建邮件模板)。
 
 ### 3.1**注册**
 
@@ -55,9 +55,11 @@
 
 ### 3.2 **创建邮件服务（Add New Service）**
 
-根据自身情况选择相关服务，作者以“Gmail”服务为例
+根据自身情况选择相关服务，作者以“Gmail”服务和“SMTP server”为例
 
 ![image-20210110124942788](https://raw.githubusercontent.com/luojiandan/imgs/main/imgs/image-20210110124942788.png)
+
+- **Gmail服务**
 
 ​	点击“Gmail”，弹出窗口，先单击“Connect Account”按钮，链接gmail邮箱进行授权，成功后点击“Create Service”按钮。
 
@@ -67,7 +69,7 @@
 
 ![image-20210110125427924](https://gitee.com/luojiandan/imgs/raw/master/image-20210110125427924.png)
 
- - **QQ邮件服务配置（SMTP服务）**
+ - **SMTP服务（QQ/163邮件服务配置）**
 
    ![image-20210110130925188](https://gitee.com/luojiandan/imgs/raw/master/image-20210110130925188.png)
 
@@ -77,7 +79,7 @@
 
 ![image-20210110131048646](https://gitee.com/luojiandan/imgs/raw/master/image-20210110131048646.png)
 
-​	邮件模板是重点，我们可以在这里邮件标题、正文内容、收件人、发件人等信息，所有信息都可以使用[模板变量](https://www.emailjs.com/docs/user-guide/dynamic-variables-templates/)，通过使用模板，可以设计出漂亮的邮件内容页面，能极大方便用户的使用。
+​	邮件模板是重点，我们可以在这里设置邮件标题、正文内容、收件人、发件人等信息，所有信息都可以使用[模板变量](https://www.emailjs.com/docs/user-guide/dynamic-variables-templates/)，通过使用模板，可以设计出漂亮的邮件内容页面，能极大方便用户的使用。
 
 ![image-20210110131222184](https://gitee.com/luojiandan/imgs/raw/master/image-20210110131222184.png)
 
@@ -99,7 +101,7 @@ TemplateID查看：
 
 ### 3.5 在PowerBI中使用邮件预警视觉对象
 
- - 通过文件方式加载视觉对象，界面如下：
+ - 通过文件方式加载视觉对象，初始界面如下：
 
    ![image-20210110152959474](https://gitee.com/luojiandan/imgs/raw/master/image-20210110152959474.png)
 
@@ -116,16 +118,18 @@ TemplateID查看：
     度量值返回类型为boolean，可以多条件组合使用，例如：
 
     ```javascript
+    //1、单个判断条件情况
     conditionFalse = 1>2  //返回false，表示不满足条件
     conditionTrue = 11>2  //返回ture，表示满足条件
     
+    //2、多个判断条件情况
     //多条件组合，使用&&符号进行连接，表示同时满足这3个条件
     condition = 
         var cond1=1>2
         var cond2=3>2
         var cond3=5>10
     
-        return  cond1 && cond2 && cond3  //返回false，表示不满足
+    return  cond1 && cond2 && cond3  //返回false，表示不满足
     
     //多条件组合，使用||符号进行连接，表示只要满足3个条件中的一个即可触发
     condition = 
@@ -133,7 +137,7 @@ TemplateID查看：
         var cond2=3>2
         var cond3=5>10
     
-        return  cond1 || cond2 || cond3  //返回true，表示满足条件
+    return  cond1 || cond2 || cond3  //返回true，表示满足条件
     ```
 
   - **邮件模板参数**
@@ -144,25 +148,26 @@ TemplateID查看：
 
     ![image-20210110173414976](https://gitee.com/luojiandan/imgs/raw/master/image-20210110173414976.png)
 
-    相关的参数编写，以上模板共有四个参数，分别为：from_name、to_name、to_mail、message。
+    以上模板共有四个参数，分别为：from_name、to_name、to_mail、message，需要在DAX中进行响应。
 
     ```javascript
     templateParameters = 
+        var emailContent="这是一封测试邮件，请忽略！"
+        return
         "{
             'from_name': '西安极泰信息科技',
-            'message': 'Check this out!',
+            'message': '" & emailContent & "', 
             'to_name': '测试账号to_name:',
             'to_mail':'luojiandan@163.com,45096732@qq.com'
-        }"
+      }"
     ```
 
     **注意：**
-
-    - 在PowerBI的DAX编辑器中，参数名称和值使用单引号进行标记。
+    
     - to_mail表示邮件接收者，多个地址可以使用“,"隔开。
-    - 若通过变量链接，则同样需要添加单引号，且字符串链接符号**使用“&"**，<u>不能使用”+“号</u>，如图：
-
-    ![image-20210110192753849](https://gitee.com/luojiandan/imgs/raw/master/image-20210110192753849.png)
+  - 在PowerBI的DAX编辑器中，参数名称和值使用单引号进行标记。
+    - 若通过变量链接，则同样需要添加单引号，且字符串链接符号**使用“&"**，<u>不能使用”+“号</u>，如上面的templateParameters。
+    
 
 - **运行过程**
 
@@ -176,24 +181,24 @@ TemplateID查看：
 
   ![image-20210110180506734](https://gitee.com/luojiandan/imgs/raw/master/image-20210110180506734.png)
 
-  **运行失败**，则会显示错误代码与原有，比如下图显示templateID错误。
+  **运行失败**，则会显示错误代码与原因，比如下图显示templateID错误。
 
-  ![image-20210110180958548](C:\Users\l\AppData\Roaming\Typora\typora-user-images\image-20210110180958548.png)
+  ![image-20210110180958548](https://gitee.com/luojiandan/imgs/raw/master/image-20210110180958548.png)
 
 ## 5、获取方式
 
 - **免费版：**
 
-  没有定时监测功能，只执行一次，通过百度云盘进行下载
+  没有定时监测功能，只执行一次。通过百度云盘进行下载
 
   链接：https://pan.baidu.com/s/1Smy2ScDDP9HHnmrg7hTjlw 
   提取码：a05u 
 
 - **收费版：**
 
-  收费版与免费版的区别是，收费版将按照用户设置的时间间隔持续运行。
+  收费版与免费版的区别是，收费版将按照用户设置的时间间隔持续运行。添加作者微信获取。
 
-  **价格为¥599元，享有终身免费升级服务，可开票**。
+  > **价格为¥599元，享有终身免费升级服务，可开票**。
 
 
 
