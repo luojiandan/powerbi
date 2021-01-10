@@ -4,9 +4,14 @@
   - [实现目的](#1实现目的)
   - [暂未实现的功能](#2暂未实现的功能)
   - [技术路线与使用说明](#3技术路线与使用说明)
-    - [emailjs注册]()
+    - [emailjs注册](#31注册)
+    - [创建邮件服务](#32-创建邮件服务add-new-service)
+    - [创建邮件模板](33-创建邮件模板)
+    - [获取相关参数](34-获取信息)
+    - [在PBI中使用](35-在powerbi中使用邮件预警视觉对象)
   - [获取方式](#5获取方式)
   - [更新记录](#6更新记录)
+  - [其他](#7其他)
 
 
 
@@ -208,9 +213,11 @@ TemplateID查看：
 
 ## 7、其他
 
-- **问题咨询、建议与留言：**[https://github.com/luojiandan/powerbi/issues](https://github.com/luojiandan/powerbi/issues)，请在github中咨询，以便统一回复
+- **问题咨询、建议与留言：**
 
-- **未来设计实现与钉钉、微信公众号的结合**
+  [https://github.com/luojiandan/powerbi/issues](https://github.com/luojiandan/powerbi/issues)，请在github中咨询，以便统一回复
+
+- **未来设计实现与钉钉、微信公众号的结合**，有需要者请与作者联系。
 
 - **其他联系方式：**
 
