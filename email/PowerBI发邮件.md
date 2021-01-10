@@ -44,37 +44,37 @@
 
 ​	点击“Gmail”，弹出窗口，先单击“Connect Account”按钮，链接gmail邮箱进行授权，成功后点击“Create Service”按钮。
 
-![image-20210110125208829](C:\Users\l\AppData\Roaming\Typora\typora-user-images\image-20210110125208829.png)
+<img src="https://gitee.com/luojiandan/imgs/raw/master/image-20210110125208829.png" alt="image-20210110125208829" style="zoom:80%;" />
 
 ​	创建成功后，将在面板中显示服务列表，注意“**Service ID**”，这是我们视觉对象需要用到的信息。
 
-![image-20210110125427924](C:\Users\l\AppData\Roaming\Typora\typora-user-images\image-20210110125427924.png)
+![image-20210110125427924](https://gitee.com/luojiandan/imgs/raw/master/image-20210110125427924.png)
 
  - **QQ邮件服务配置（SMTP服务）**
 
-   ![image-20210110130925188](C:\Users\l\AppData\Roaming\Typora\typora-user-images\image-20210110130925188.png)
+   ![image-20210110130925188](https://gitee.com/luojiandan/imgs/raw/master/image-20210110130925188.png)
 
    注意密码填写的是授权码，关于QQ邮箱配置，请点[这里](https://service.mail.qq.com/cgi-bin/help?subtype=1&&id=28&&no=1001256)，163邮箱配置，请点[这里](https://help.mail.163.com/faqDetail.do?code=d7a5dc8471cd0c0e8b4b8f4f8e49998b374173cfe9171305fa1ce630d7f67ac2cda80145a1742516)。
 
 - **创建邮件模板**
 
-![image-20210110131048646](C:\Users\l\AppData\Roaming\Typora\typora-user-images\image-20210110131048646.png)
+![image-20210110131048646](https://gitee.com/luojiandan/imgs/raw/master/image-20210110131048646.png)
 
-​	邮件模板是重点，我们可以在这里邮件标题、正文内容、收件人、发件人等信息，所有信息都可以使用[模板变量](https://www.emailjs.com/docs/user-guide/dynamic-variables-templates/)。![image-20210110131222184](C:\Users\l\AppData\Roaming\Typora\typora-user-images\image-20210110131222184.png)
+​	邮件模板是重点，我们可以在这里邮件标题、正文内容、收件人、发件人等信息，所有信息都可以使用[模板变量](https://www.emailjs.com/docs/user-guide/dynamic-variables-templates/)。![image-20210110131222184](https://gitee.com/luojiandan/imgs/raw/master/image-20210110131222184.png)
 
 - 至此，我们在emailjs网站做完了相关配置，接下来就可以进入PowerBI桌面端使用邮件预警视觉对象，在此之前，我们需要先记录相关信息，分别为：UserID、ServiceID、TemplateID以及模板参数(上图内容)。
 
   **UserID查看：**
 
-  ![image-20210110132055390](C:\Users\l\AppData\Roaming\Typora\typora-user-images\image-20210110132055390.png)
+  ![image-20210110132055390](https://gitee.com/luojiandan/imgs/raw/master/image-20210110132055390.png)
 
   **ServiceID查看：**
 
-  ![image-20210110132159927](C:\Users\l\AppData\Roaming\Typora\typora-user-images\image-20210110132159927.png)
+  ![image-20210110132159927](https://gitee.com/luojiandan/imgs/raw/master/image-20210110132159927.png)
 
   TemplateID查看：
 
-  ![image-20210110132247304](C:\Users\l\AppData\Roaming\Typora\typora-user-images\image-20210110132247304.png)
+  ![image-20210110132247304](https://gitee.com/luojiandan/imgs/raw/master/image-20210110132247304.png)
 
 - 
 
