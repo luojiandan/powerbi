@@ -4,6 +4,7 @@
   - [实现目的](#1实现目的)
   - [暂未实现的功能](#2暂未实现的功能)
   - [技术路线与使用说明](#3技术路线与使用说明)
+    - [emailjs注册]()
   - [获取方式](#5获取方式)
   - [更新记录](#6更新记录)
 
@@ -71,7 +72,9 @@
 
 ![image-20210110131048646](https://gitee.com/luojiandan/imgs/raw/master/image-20210110131048646.png)
 
-​	邮件模板是重点，我们可以在这里邮件标题、正文内容、收件人、发件人等信息，所有信息都可以使用[模板变量](https://www.emailjs.com/docs/user-guide/dynamic-variables-templates/)。![image-20210110131222184](https://gitee.com/luojiandan/imgs/raw/master/image-20210110131222184.png)
+​	邮件模板是重点，我们可以在这里邮件标题、正文内容、收件人、发件人等信息，所有信息都可以使用[模板变量](https://www.emailjs.com/docs/user-guide/dynamic-variables-templates/)，通过使用模板，可以设计出漂亮的邮件内容页面，能极大方便用户的使用。
+
+![image-20210110131222184](https://gitee.com/luojiandan/imgs/raw/master/image-20210110131222184.png)
 
 ### 3.4 获取信息
 
@@ -95,38 +98,125 @@ TemplateID查看：
 
    ![image-20210110152959474](https://gitee.com/luojiandan/imgs/raw/master/image-20210110152959474.png)
 
-   参数设置：
+   **参数设置：**
 
-   ![image-20210110153548572](C:\Users\l\AppData\Roaming\Typora\typora-user-images\image-20210110153548572.png)
+   ![image-20210110153548572](https://gitee.com/luojiandan/imgs/raw/master/image-20210110153548572.png)
 
 - **定时发送：**通过设置“星期、小时、分钟”这3个参数的组合实现**定时发送**。
 
-3、powerbi示例文件下载
+- **DAX度量值编写**
 
+  - **条件**
 
+    度量值返回类型为boolean，可以多条件组合使用，例如：
 
+    ```javascript
+    conditionFalse = 1>2  //返回false，表示不满足条件
+    conditionTrue = 11>2  //返回ture，表示满足条件
+    
+    //多条件组合，使用&&符号进行连接，表示同时满足这3个条件
+    condition = 
+        var cond1=1>2
+        var cond2=3>2
+        var cond3=5>10
+    
+        return  cond1 && cond2 && cond3  //返回false，表示不满足
+    
+    //多条件组合，使用||符号进行连接，表示只要满足3个条件中的一个即可触发
+    condition = 
+        var cond1=1>2
+        var cond2=3>2
+        var cond3=5>10
+    
+        return  cond1 || cond2 || cond3  //返回true，表示满足条件
+    ```
 
+  - **邮件模板参数**
 
+    邮件模板参数的编写是重点，首先，模板中定义的变量(使用"**{{}}**")都需要进行响应，在这里，我们采用json格式进行管理，例如：
 
+    对应的模板文件：
+
+    ![image-20210110173414976](https://gitee.com/luojiandan/imgs/raw/master/image-20210110173414976.png)
+
+    相关的参数编写，以上模板共有四个参数，分别为：from_name、to_name、to_mail、message。
+
+    ```javascript
+    templateParameters = 
+        "{
+            'from_name': '西安极泰信息科技',
+            'message': 'Check this out!',
+            'to_name': '测试账号to_name:',
+            'to_mail':'luojiandan@163.com,45096732@qq.com'
+        }"
+    ```
+
+    **注意：**
+
+    - 在PowerBI的DAX编辑器中，参数名称和值使用单引号进行标记。
+    - to_mail表示邮件接收者，多个地址可以使用“,"隔开。
+    - 若通过变量链接，则同样需要添加单引号，且字符串链接符号**使用“&"**，<u>不能使用”+“号</u>，如图：
+
+    ![image-20210110192753849](https://gitee.com/luojiandan/imgs/raw/master/image-20210110192753849.png)
+
+- **运行过程**
+
+  程序会先判断触发条件是否满足，触发条件包含逻辑条件和时间条件，其中逻辑条件从Condition字段获取，时间条件则从属性设置中获取。
+
+![image-20210110174400616](https://gitee.com/luojiandan/imgs/raw/master/image-20210110174400616.png)
+
+- **运行结果**
+
+  **运行成功**，按照用户模板和参数值生成邮件信息，并发送，收到邮件结果如下：
+
+  ![image-20210110180506734](https://gitee.com/luojiandan/imgs/raw/master/image-20210110180506734.png)
+
+  **运行失败**，则会显示错误代码与原有，比如下图显示templateID错误。
+
+  ![image-20210110180958548](C:\Users\l\AppData\Roaming\Typora\typora-user-images\image-20210110180958548.png)
 
 ## 5、获取方式
 
-- 费用：599元，终身免费
-- 获取方式：扫以下微信号，付款，由客服拉进群
-- 开票：
+- **免费版：**
+
+  没有定时监测功能，只执行一次，通过百度云盘进行下载
+
+  链接：https://pan.baidu.com/s/1Smy2ScDDP9HHnmrg7hTjlw 
+  提取码：a05u 
+
+- **收费版：**
+
+  收费版与免费版的区别是，收费版将按照用户设置的时间间隔持续运行。
+
+  **价格为¥599元，享有终身免费升级服务，可开票**。
 
 
 
 ## 6、更新记录
 
+### v1.0.0版本
+
+​	于2021年1月10日，首次发布，完成了以下功能：
+
+- 定时运行设置
+- 条件运行设置
+- 邮件模板参数动态设置
+- 通过DAX度量值进行参数与逻辑条件设置
+- ~~截屏并发送[由于技术原因，暂不能实现]~~
+
 
 
 ## 7、其他
 
-- 建议与留言：请在github中进行留言，以便统一回复
-- 未来设计与钉钉、微信公众号的结合
+- **问题咨询、建议与留言：**[https://github.com/luojiandan/powerbi/issues](https://github.com/luojiandan/powerbi/issues)，请在github中咨询，以便统一回复
+
+- **未来设计实现与钉钉、微信公众号的结合**
+
+- **其他联系方式：**
+
+  微信：luojiandan
+
+  QQ：45096732
 
 
-
-## 
 
