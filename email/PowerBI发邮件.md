@@ -20,7 +20,7 @@
 
 ​	邮件发送采用第三方库：[emailjs](https://www.emailjs.com/)，共提供了4种版本，我们可以根据需要选择，其中免费版每月可发200封，能创建2个邮件模板，在无特殊需求情况下，可选择使用免费版(注册账号后，默认为免费版)。
 
-![img](file:///C:\Users\l\AppData\Roaming\Tencent\Users\45096732\QQ\WinTemp\RichOle\OE1MB}0KRG6XZXJH8Y5PSYT.png)
+![img](https://raw.githubusercontent.com/luojiandan/imgs/main/imgs/OE1MB%7D0KRG6XZXJH8Y5PSYT.png)
 
 ​	账号注册后，我们还需要创建邮件服务与邮件模板。
 
@@ -28,19 +28,19 @@
 
   只需填写**用户名、邮箱、密码**即可。
 
-![image-20210110124418140](C:\Users\l\AppData\Roaming\Typora\typora-user-images\image-20210110124418140.png)
+![image-20210110124418140](https://raw.githubusercontent.com/luojiandan/imgs/main/imgs/image-20210110124418140.png)
 
 - **主界面**
 
   登录后主界面如下，上方提示剩余配额200封，点击“Add New Service”创建邮件服务。
 
-![image-20210110124633585](C:\Users\l\AppData\Roaming\Typora\typora-user-images\image-20210110124633585.png)
+![image-20210110124633585](https://raw.githubusercontent.com/luojiandan/imgs/main/imgs/image-20210110124633585.png)
 
 - **创建邮件服务（Add New Service）**
 
   根据自身情况选择相关服务，作者以“Gmail”服务为例
 
-![image-20210110124942788](C:\Users\l\AppData\Roaming\Typora\typora-user-images\image-20210110124942788.png)
+![image-20210110124942788](https://raw.githubusercontent.com/luojiandan/imgs/main/imgs/image-20210110124942788.png)
 
 ​	点击“Gmail”，弹出窗口，先单击“Connect Account”按钮，链接gmail邮箱进行授权，成功后点击“Create Service”按钮。
 
