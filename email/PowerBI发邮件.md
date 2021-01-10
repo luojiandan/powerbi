@@ -9,9 +9,13 @@
 
 
 
+
+
 ## 1、实现目的
 
 ​	在PowerBI中开发一个视觉对象，实现邮件发送功能，既可定时执行，也可添加触发条件，邮件正文内容可以设定模板。
+
+​	**目前即可在桌面端、也可在服务端运行。**
 
 
 
@@ -33,21 +37,19 @@
 
 ​	账号注册后，我们还需要创建邮件服务与邮件模板。
 
-- **注册页面**
+### 3.1**注册**
 
-  只需填写**用户名、邮箱、密码**即可。
+​	只需填写**用户名、邮箱、密码**即可。
 
 ![image-20210110124418140](https://raw.githubusercontent.com/luojiandan/imgs/main/imgs/image-20210110124418140.png)
 
-- **主界面**
-
-  登录后主界面如下，上方提示剩余配额200封，点击“Add New Service”创建邮件服务。
+​	登录后主界面如下，上方提示剩余配额200封，点击“Add New Service”创建邮件服务。
 
 ![image-20210110124633585](https://raw.githubusercontent.com/luojiandan/imgs/main/imgs/image-20210110124633585.png)
 
-- **创建邮件服务（Add New Service）**
+### 3.2 **创建邮件服务（Add New Service）**
 
-  根据自身情况选择相关服务，作者以“Gmail”服务为例
+根据自身情况选择相关服务，作者以“Gmail”服务为例
 
 ![image-20210110124942788](https://raw.githubusercontent.com/luojiandan/imgs/main/imgs/image-20210110124942788.png)
 
@@ -65,29 +67,45 @@
 
    注意密码填写的是授权码，关于QQ邮箱配置，请点[这里](https://service.mail.qq.com/cgi-bin/help?subtype=1&&id=28&&no=1001256)，163邮箱配置，请点[这里](https://help.mail.163.com/faqDetail.do?code=d7a5dc8471cd0c0e8b4b8f4f8e49998b374173cfe9171305fa1ce630d7f67ac2cda80145a1742516)。
 
-- **创建邮件模板**
+### 3.3 **创建邮件模板**
 
 ![image-20210110131048646](https://gitee.com/luojiandan/imgs/raw/master/image-20210110131048646.png)
 
 ​	邮件模板是重点，我们可以在这里邮件标题、正文内容、收件人、发件人等信息，所有信息都可以使用[模板变量](https://www.emailjs.com/docs/user-guide/dynamic-variables-templates/)。![image-20210110131222184](https://gitee.com/luojiandan/imgs/raw/master/image-20210110131222184.png)
 
-- 至此，我们在emailjs网站做完了相关配置，接下来就可以进入PowerBI桌面端使用邮件预警视觉对象，在此之前，我们需要先记录相关信息，分别为：UserID、ServiceID、TemplateID以及模板参数(上图内容)。
+### 3.4 获取信息
 
-  **UserID查看：**
+至此，我们在emailjs网站做完了相关配置，接下来就可以进入PowerBI桌面端使用邮件预警视觉对象，在此之前，我们需要先记录相关信息，分别为：UserID、ServiceID、TemplateID以及模板参数(上图内容)。
 
-  ![image-20210110132055390](https://gitee.com/luojiandan/imgs/raw/master/image-20210110132055390.png)
+**UserID查看：**
 
-  **ServiceID查看：**
+![image-20210110132055390](https://gitee.com/luojiandan/imgs/raw/master/image-20210110132055390.png)
 
-  ![image-20210110132159927](https://gitee.com/luojiandan/imgs/raw/master/image-20210110132159927.png)
+**ServiceID查看：**
 
-  TemplateID查看：
+![image-20210110132159927](https://gitee.com/luojiandan/imgs/raw/master/image-20210110132159927.png)
 
-  ![image-20210110132247304](https://gitee.com/luojiandan/imgs/raw/master/image-20210110132247304.png)
+TemplateID查看：
 
-- 
+![image-20210110132247304](https://gitee.com/luojiandan/imgs/raw/master/image-20210110132247304.png)
 
-- 3、powerbi示例文件下载
+### 3.5 在PowerBI中使用邮件预警视觉对象
+
+ - 通过文件方式加载视觉对象，界面如下：
+
+   ![image-20210110152959474](https://gitee.com/luojiandan/imgs/raw/master/image-20210110152959474.png)
+
+   参数设置：
+
+   ![image-20210110153548572](C:\Users\l\AppData\Roaming\Typora\typora-user-images\image-20210110153548572.png)
+
+- **定时发送：**通过设置“星期、小时、分钟”这3个参数的组合实现**定时发送**。
+
+3、powerbi示例文件下载
+
+
+
+
 
 
 
@@ -103,11 +121,12 @@
 
 
 
-绿夏(454751596) 2021/1/3 22:08:33
-目前没有触发邮件的需求，倒是出发钉钉机器人发送指定群到挺好。而且除了条件触发，其实定时触发的也有用。比如固定的日报数据
+## 7、其他
 
-[emailjs](https://www.npmjs.com/package/emailjs)
+- 建议与留言：请在github中进行留言，以便统一回复
+- 未来设计与钉钉、微信公众号的结合
 
-https://www.emailjs.com/
-[简单5步配置EMailJS](https://developer.51cto.com/art/202005/616427.htm?pc)
+
+
+## 
 
